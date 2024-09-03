@@ -1,6 +1,6 @@
-###1. Örnek 
+1. Örnek 
 
-##Mevcut ağ bağlantılarını listeleyen bir betik.
+Mevcut ağ bağlantılarını listeleyen bir betik.
 
 
 Öncelikle list_coonnection.sh dosyamı oluşturuyorum.
