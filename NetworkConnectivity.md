@@ -1,5 +1,4 @@
-Mevcut ağ bağlantılarını listeleyen bir betik.
-
+A script that lists the available network connections.
 
 ```
 #!/bin/bash
@@ -7,37 +6,36 @@ Mevcut ağ bağlantılarını listeleyen bir betik.
 OUTPUT_FİLE =" /root/connection.txt"
 
 if [-f "$OUTPUT_FİLE"]; then
-    echo "Eski dosya bulunuyor ve siliniyor.."
+    echo "The old file is being found and deleted."
     rm "$OUTPUT_FİLE"
 fi
 
-echo "Ağ Bağlantıları- $(date)" > $OUTPUT_FİLE
+echo "Network Connections- $(date)" > $OUTPUT_FİLE
 echo "------------------------------" >> $OUTPUT_FİLE
 
-echo "Netstat Çıktısı:" >> $OUTPUT_FİLE
+echo "Netstat Output:" >> $OUTPUT_FİLE
 echo "----------------" >> $OUTPUT_FİLE
 netstat -tulnp >> $OUTPUT_FİLE 2>&1
 echo "" >> $OUTPUT_FİLE
 
-echo "SS Çıktısı:" >> $OUTPUT_FİLE
+echo "SS Output:" >> $OUTPUT_FİLE
 echo "-----------" >> $OUTPUT_FİLE
 
 ```
 
-KODUN AÇIKLAMASI
+CODE DESCRIPTION
 
-#!/bin/bash: Bu, betiğin hangi kabuk (shell) ile çalıştırılacağını belirtir.
+#!/bin/bash: This specifies which shell to run the script with.
 
-OUTPUT_FILE="/root/connections.txt": Betik tarafından oluşturulacak olan dosyanın yolunu tanımlar.
+OUTPUT_FILE=‘/root/connections.txt’: Defines the path to the file to be created by the script.
 
-if [ -f "$OUTPUT_FILE" ]; then ... fi: Eğer connections.txt dosyası daha önce mevcutsa, eski dosya silinir.
+if [ -f ‘$OUTPUT_FILE’ ]; then ... fi: If connections.txt already exists, the old file is deleted.
 
-echo "Ağ Bağlantıları - $(date)" > $OUTPUT_FILE: Dosyanın başına tarih ve saat bilgisi ekler.
+echo ‘Network Connections - $(date)’ > $OUTPUT_FILE: Adds date and time information at the beginning of the file.
 
-netstat -tulnp ve ss -tulnp komutları, TCP/UDP protokollerini kullanan aktif bağlantıları ve bu bağlantılara ait süreç bilgilerini listeler. Çıktılar dosyaya yazılır.
+The netstat -tulnp and ss -tulnp commands list the active connections using TCP/UDP protocols and the process information of these connections. The output is written to a file.
 
-2>&1 standart hatayı (stderr) standart çıktı (stdout) ile aynı konuma yönlendirmek için kullanılır. 
-
+2>&1 is used to redirect standard error (stderr) to the same location as standard output (stdout). 
 
 
 
